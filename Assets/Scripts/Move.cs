@@ -1,8 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveRogue : MonoBehaviour
+[RequireComponent(typeof(Animator))]
+
+public class Move : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private ContactFilter2D _filter;
@@ -11,29 +11,27 @@ public class MoveRogue : MonoBehaviour
 
     private readonly RaycastHit2D[] _results = new RaycastHit2D[1];
     private Animator _animator;
-    private static MoveRogue s_Instance;
-    public static MoveRogue Instance
+    private string _walk = "isWalk";
+
+    private void Start()
     {
-        get
-        {
-            return s_Instance;
-        }
+        _animator = GetComponent<Animator>();
+        Animator.StringToHash(_walk);
     }
 
     private void Update()
     {
-        _animator = GetComponent<Animator>();
         var collisionCount = _rigidbody2D.Cast(transform.right, _filter, _results, _distanteVisible);
 
         if (collisionCount == 0)
         {
             _rigidbody2D.velocity = transform.right * _speed;
-            _animator.SetBool("isWalk", true);
+            _animator.SetBool(_walk, true);
         }
         else if (collisionCount > 0)
         {
             _rigidbody2D.velocity = Vector2.zero;
-            _animator.SetBool("isWalk", false);
+            _animator.SetBool(_walk, false);
         }
     }
 }

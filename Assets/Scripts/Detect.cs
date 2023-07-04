@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class RogueDetect : MonoBehaviour
+public class Detect : MonoBehaviour
 {
     [SerializeField] private UnityEvent _enter;
 
