@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 
-public class Move : MonoBehaviour
+public class Mover : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody2D;
     [SerializeField] private ContactFilter2D _filter;

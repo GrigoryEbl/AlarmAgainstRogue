@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 
-public class Detect : MonoBehaviour
+public class Detector : MonoBehaviour
 {
     [SerializeField] private UnityEvent _enter;
 
